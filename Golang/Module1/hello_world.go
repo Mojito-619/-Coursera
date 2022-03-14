@@ -1,9 +1,8 @@
 // Packages
 package main
 
-import "fmt"
-
 // Imports
+import "fmt"
 
 // Main Function
 func main() {
