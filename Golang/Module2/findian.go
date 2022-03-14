@@ -3,7 +3,9 @@ package main
 
 // Imports
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -11,19 +13,24 @@ import (
 func main() {
 
 	// Declaring Main scope variables
-	var user_scan string
 	search_result := "Not Found!"
 	var err error
 
+	// Because fmt.Scan separates strings into args with space, we can use bufio
 	fmt.Print("Please enter a string: ")
-	fmt.Scanf("%s \n", &user_scan)
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	line := scanner.Text()
+
+	// Make analysis case insensitive
+	line = strings.ToLower(line)
 
 	if err != nil {
 		fmt.Println("Error: ", err)
 	} else { // All 3 runes must be found for a "Found!" ouput
-		if strings.Contains(user_scan, "i") &&
-			strings.Contains(user_scan, "a") &&
-			strings.Contains(user_scan, "n") {
+		if strings.HasPrefix(line, "i") &&
+			strings.Contains(line, "a") &&
+			strings.HasSuffix(line, "n") {
 			search_result = "Found!"
 		}
 		fmt.Println(search_result)
