@@ -23,8 +23,8 @@ func main() {
 
 	fmt.Print("Please enter your adress: ")
 	scanner.Scan()
-	adress_scan := scanner.Text()
-	person["adress"] = adress_scan
+	address_scan := scanner.Text()
+	person["address"] = address_scan
 
 	json_person, err := json.Marshal(person)
 	if err != nil {
